@@ -11,6 +11,12 @@
               <router-link to="/update" class="btn btn-outline-secondary">
                 Next
               </router-link>
+              <br />
+              <br />
+              Post test! <br />
+              <span v-for="post in posts">
+                {{ post.title }}
+              </span>
             </div>
           </div>
         </div>
@@ -20,9 +26,12 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
+      posts: [],
       stateData: "",
       message: "Hallow World!",
     };
@@ -30,6 +39,15 @@ export default {
 
   mounted() {
     this.stateData = this.$store.getters.getMessage;
+  },
+
+  async created() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        this.posts = response.data;
+      })
+      .catch((e) => {});
   },
 };
 </script>
