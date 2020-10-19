@@ -15,7 +15,9 @@
               <br />
               Post test! <br />
               <span v-for="post in posts">
-                {{ post.title }}
+                <p style="color: red">
+                  {{ post.id }} {{ post.title }} {{ post.completed }}
+                </p>
               </span>
             </div>
           </div>
@@ -43,7 +45,7 @@ export default {
 
   async created() {
     axios
-      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .get("https://jsonplaceholder.typicode.com/todos")
       .then((response) => {
         this.posts = response.data;
       })
