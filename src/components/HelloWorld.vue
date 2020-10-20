@@ -14,6 +14,7 @@
               <br />
               <br />
               Post test! <br />
+              <input :value="message" @input="updateMessage">
               <span v-for="post in posts">
                 <p style="color: red">
                   {{ post.id }} {{ post.title }} {{ post.completed }}
@@ -51,6 +52,13 @@ export default {
       })
       .catch((e) => {});
   },
+
+methods: {
+  updateMessage (e) {
+    this.$store.commit('updateMessage', e.target.value)
+  }
+}, 
+
 };
 </script>
 

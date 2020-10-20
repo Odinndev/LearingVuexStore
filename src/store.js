@@ -1,6 +1,7 @@
 // import and vuex
 import Vue from "vue";
 import Vuex from "vuex";
+
 Vue.use(Vuex);
 
 // create our store
@@ -17,8 +18,8 @@ export default new Vuex.Store({
  },
 
  mutations: {
-  changeMessageValue(state, message) {
-   state.message = message;
+  updateMessage (state, message) {
+    state.obj.message = message
   }
  },
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     setTimeout(() => {
      commit("updateState");
      resolve();
+     reject();
     }, 3000);
    });
   }
